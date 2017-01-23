@@ -1,0 +1,57 @@
+{% extends 'base_template.html' %}   
+{% block eventMap %}{% endblock %}
+{% block topTitle %}
+    <a class="navbar-brand" href="{% url 'home' %}">Create your event, {{username}}!</a>
+{% endblock %} 
+{% block functionButton %}
+    <a class="nav-item btn btn-success" href="{% url 'profile' %}">Profile</a>
+    <a class="nav-item btn btn-success" href="{% url 'logout' %}">Log out</a>
+{% endblock %}
+{% block realTitle %}
+        <h1><span class="home_title">MapGether!</span></h1>
+        <p class="subtitle">Lunch an team for your friends!</p>
+        <p><a class="btn btn-primary btn-lg" href="{% url 'home' %}" role="button">Back to main page &raquo;</a></p>
+{% endblock %}
+{% block bodyBlock %}
+<div class="row">
+<div class="col-md-4">
+</div>
+<div class="col-md-6">
+<form action="{% url 'edit_profile' %}" method="post" enctype="multipart/form-data" class="event_form">
+
+
+{% if form.errors %}
+  {% for field in form %}
+    {% for error in field.errors %}
+        
+      <b style="color: red"> {{ error}} </b>
+        
+    {% endfor %}
+  {% endfor %}
+{% endif %}
+
+  <span class="plan-title1"><h3>Edit your profile right now<h3></span>
+  {% csrf_token %}
+    <fieldset>
+    <span class="plan-feature">Occupation:</span><input class="input_type" placeholder="Occupation" type="text", name="occupation", value="{{profile.occupation}}", required>
+    </fieldset>
+    <fieldset>
+    <span class="plan-feature">School:</span><input class="input_type" placeholder="School" type="text", name="school", value="{{profile.school}}", required>
+    </fieldset>
+    <fieldset>
+    <span class="plan-feature">Age:</span><input class="input_type" placeholder="Age" type="number", name="age", min="1", max="100", value="{{profile.age}}", required>
+    </fieldset>
+    <fieldset>
+    <span class="plan-feature">Bio:</span><textarea class="input_type "name="bio", row="15" required>{{profile.bio}}</textarea>
+    </fieldset>
+    <fieldset>
+    <span class="plan-feature">Image</span><input type="file", name="image", required><br>
+    </fieldset>
+    <fieldset>
+    <a class="nav-item btn btn-success" href="{% url 'profile' %}">Cancel</a>
+    <input type="submit" value="Submit" class="btn btn-success"><br>
+    </fieldset>
+</form>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,9 @@
+1. I use the templete from homework 3 and reqrrange it by template inheritance
+
+2. I have referenced the sample code "Private-todo-List"
+
+3. I have referenced the Django official document for function implementation
+
+4. I have referenced bootstrap example and used those examples to complete my page design
+
+

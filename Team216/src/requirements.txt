@@ -1,0 +1,11 @@
+boto==2.43.0
+botocore==1.4.67
+postgres==2.2.1
+Django==1.10.3
+django-storages==1.5.1
+icalendar==3.10
+Pillow==3.4.2
+psycopg2==2.6.2
+python-dateutil==2.5.3
+pytz==2016.7
+six==1.10.0

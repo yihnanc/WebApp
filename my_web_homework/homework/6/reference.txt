@@ -1,0 +1,9 @@
+1. I use the templete from homework 4 and use jquery to implement post and comment function
+
+2. I have referenced the sample code "Shared-todo-List at 2016-10-12"
+
+3. I have referenced the Django official document for function implementation
+
+4. I have referenced bootstrap example and used those examples to complete my page design
+
+

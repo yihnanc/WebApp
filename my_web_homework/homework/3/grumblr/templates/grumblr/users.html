@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+
+    <title>Grid Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'grumblr/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'grumblr/grid.css' %}" rel="stylesheet">
+    <link href="{% static 'grumblr/navbar.css' %}" rel="stylesheet">
+    <link href="{% static 'grumblr/offcanvas.css' %}" rel="stylesheet">
+    <link href="{% static 'grumblr/blog.css' %}" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="container">
+    <nav class="navbar navbar-light bg-faded">
+        <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#navbar-header" aria-controls="navbar-header">
+          &#9776;
+        </button>
+        <div class="collapse navbar-toggleable-xs" id="navbar-header">
+          <nav class="nav navbar-nav">
+          <a class="nav-item nav-link" href="{% url 'logout' %}">Log out</a>
+          <a class="nav-item nav-link" href="{% url 'stream' %}">Newest post</a>
+          </nav>
+          <nav class="nav navbar-nav pull-xs-right">
+          <a class="nav-item nav-link" href="{% url 'login' %}">Log In</a>
+          <a class="nav-item nav-link" href="{% url 'home' %}">Home</a>
+        </nav>
+        </div>
+      </nav> <!-- /navbar -->
+      <h1 class="blog-title">{{users.username}}'s Profile</h1>
+      <span class="textTitle1">Here is the basic information and the most recent post of you</span>
+      <p></p>
+      <p></p>
+<div class="row blog-header">
+  <div class="textTitle"><p>Personal Info</p></div>
+  <div class="col-xs-4">
+    <img src="images/curry.jpg" alt="Image not found" height="200" width="200"/>
+  </div>
+  <div class="col-xs-4">
+    <input class="input" type="text" autocomplete="off" size="34" value="Last Name: {{users.last_name}}" readonly/>
+    <p></p>
+    <input class="input" type="text" autocomplete="off" size="34" value="First Name: {{users.first_name}}" readonly/>
+    <p></p>
+     <input class="input" type="text" autocomplete="off" size="34" value="Username: {{users.username}}" readonly/>
+     <p></p>
+      <input class="input" type="text" autocomplete="off" size="34" value="Email: {{users.email}}" readonly/>
+  </div>
+  
+</div>
+<div class="row">
+  <h2>Post History</h2>
+</div>
+
+{% for post in posts %}
+    <div class="row">
+    <form>
+    <input class="textStyle1 textHeight textBackground" name="comment" type="text" size="42" value={{post.post}} readonly="readonly" />
+    <br/>
+    </form>
+    </div>
+    <div class="row">
+    <input class="userText" name="comment" type="text" value={{post.time}} readonly="readonly" />
+    </div>
+{% endfor %}
+
+<div class="row">
+  <a class="btn btn-outline-primary" href="#">Newer</a>
+  <a class="btn btn-outline-primary" href="#">Older</a>
+</div>
+
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

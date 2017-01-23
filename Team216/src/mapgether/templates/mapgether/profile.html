@@ -1,0 +1,112 @@
+{% extends 'base_template.html' %}
+{% block eventMap %}{% endblock %}
+{% block topTitle %}
+    <a class="navbar-brand" href="{% url 'home' %}">Welcome {{user.username}}</a>
+{% endblock %} 
+{% block functionButton %}
+    <a class="nav-item btn btn-success" href="{% url 'create_event' %}">Create Event</a>
+    <a class="nav-item btn btn-success" href="{% url 'logout' %}">Log out</a>
+{% endblock %}
+{% block realTitle %}
+        <h1 class="home_title"><span class="home_title">MapGether!</span></h1>
+        
+        <p><a class="btn btn-primary btn-lg" href="{% url 'home' %}" role="button">Back to main page &raquo;</a></p>
+        <br>
+        <p class="subtitle">Upload your personal calendar for adding events.</p>
+        
+        <form action="/mapgether/addcalendar" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+            <input class="btn btn-default" type="file", name="filename_calendar">
+          <input class="nav-item btn btn-success" type="submit" value="Submit" >
+        </form>
+        {% if event_message %}
+        <p style="color:red">
+        {{event_message}}
+        </p>
+        {% endif %}       
+{% endblock %}
+{% block bodyBlock %}
+      <div class="row">
+        <div class="col-md-6 event_form">
+          <h1 class="plan-title1">User Profile</h1>
+          {% if profile.image %}
+          <img src="{% url 'user_photo' id=profile.user.id %}" width="200px">
+          {% endif %}
+          <ul class="plan-features">
+          <li class="plan-feature2"> Username: <span class="plan-feature3">{{username}} </span></li>
+          <li class="plan-feature2"> Occupation: <span class="plan-feature3">{{profile.occupation}}</span></li>
+          <li class="plan-feature2"> School: <span class="plan-feature3">{{profile.school}} </span></li>
+          <li class="plan-feature2"> Age: <span class="plan-feature3">{{profile.age}} </span></li>
+          <li class="plan-feature2">Bio message:<br><span class="paragraph">{{profile.bio}}</span></br></li>
+          {% ifequal username user.username %}
+          <br>
+          <a class="nav-item btn btn-success" href="{% url 'edit_profile' %}">Edit Profile</a>
+          </br>
+          {% endifequal %}
+          </ul>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-5">
+        <div class="row">
+        
+        </div>
+        <div class="row event_form">
+
+          {% if tagerrors.errors %}
+            {% for field in tagerrors %}
+                {% for error in field.errors %}
+                    
+                    <b style="color:red">{{ error}}</b>
+                    
+                {% endfor %}
+            {% endfor %}
+          {% endif %}
+
+        <fieldset>
+
+        {% for tag in tags %}
+        <span class="btn btn-primary">{{tag.tagname}}</span>
+        {%endfor%}
+        </fieldset>
+
+        <form action="{% url 'add_tag' %}" method="post">
+            {% csrf_token %}
+            <input class="input_type" placeholder="Tags" type="text", name="tags", required><br>
+            <input class="nav-item btn btn-success" type="submit" value="Submit"><br>
+        </form>
+        </div>
+        
+        
+
+          <form action="{% url 'user_tag' %}" method="post" class="form-type event_form">
+            <h1 class="plan-title1">Customize your favorite tags in main page</h1>
+            <h3> Choose another 5 tages</h3>
+
+            {% if tagmessage%}
+            {{tagmessage}}
+            {% endif %}
+
+            {% if form.errors %}
+              {% for field in form %}
+                  {% for error in field.errors %}
+                      
+                      {{ error}}
+                      
+                  {% endfor %}
+              {% endfor %}
+            {% endif %}
+
+            {% csrf_token %}
+            <div class="ui-widget">
+            <b>Enter tag's name (autocomplete)</b>
+            <input class="input_type" placeholder="tags" type="text", name="tags", id="tags"><br>
+            </div>
+            
+            <input class="btn btn-success" type="submit" value="change">
+            <a class="btn btn-success" href="{% url 'home' %}">Cancel</a>
+          </form>
+
+        
+        </div>
+      </div>
+{% endblock %}

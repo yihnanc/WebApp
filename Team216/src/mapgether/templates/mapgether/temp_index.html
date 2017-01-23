@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>parsing .ics file test</title>
+</head>
+
+<body>
+{% for error in errors %}
+<p style="color:red">
+{{error}}
+</p>
+{% endfor %}
+
+<p>Upload a file:</p>
+<form action="/mapgether/addcalendar" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+    <input type="file", name="filename_calendar" >
+    <input type="submit" value="Submit">
+</form>
+
+</body>

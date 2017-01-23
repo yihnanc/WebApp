@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Navbar Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'grumblr/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'grumblr/navbar.css' %}" rel="stylesheet">
+    <link href="{% static 'grumblr/offcanvas.css' %}" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-light bg-faded">
+        <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#navbar-header" aria-controls="navbar-header">
+          &#9776;
+        </button>
+        <div class="collapse navbar-toggleable-xs" id="navbar-header">
+          {% if username %}
+          <nav class="nav navbar-nav">
+          <a class="nav-item nav-link" href="{% url 'logout' %}">Log out</a>
+          </nav>
+          {% endif %}
+          <nav class="nav navbar-nav pull-xs-right">
+          {% if not username %}
+          <a class="nav-item nav-link" href="{% url 'login' %}">Log In</a>
+          {% endif %}
+          <a class="nav-item nav-link" href="{% url 'register' %}">Sign up</a>
+        </nav>
+        </div>
+      </nav> <!-- /navbar -->
+
+     <div class="jumbotron1">
+            <h1>Grumblr!</h1>
+            <p>This is an example blog which shows how to design a website</p>
+          </div>
+    <div class="container">
+      
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <h1>Share what you are doing</h1>
+        {% if username %}
+        <h2>Welcome! <a href={% url 'users' username %}>{{username}}</a></h2>
+        {% endif %}
+        <p>Tell what you want and share your feeling with us.
+          There are thounds of people here to chat with you and
+          enjoy happy times together
+        </p>
+        <p>
+          <a class="btn btn-lg btn-primary" href="{% url 'stream' %}" role="button">View Global Stream of Glumblr &raquo;</a>
+        </p>
+      </div>
+
+    </div> <!-- /container -->
+
+
+  </body>
+</html>

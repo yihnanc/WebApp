@@ -1,0 +1,96 @@
+{% extends 'base_template.html' %}
+{% block eventMap %}{% endblock %}
+{% block topTitle %}
+    <a class="navbar-brand" href="{% url 'home' %}">Create your event, {{username}}!</a>
+{% endblock %} 
+{% block functionButton %}
+    <a class="nav-item btn btn-success" href="{% url 'profile' %}">Profile</a>
+    <a class="nav-item btn btn-success" href="{% url 'logout' %}">Log out</a>
+{% endblock %}
+{% block realTitle %}
+        <h1><span class="home_title">MapGether!</span></h1>
+        <p class="subtitle">Lunch an team for your friends!</p>
+        <p><a class="btn btn-primary btn-lg" href="{% url 'home' %}" role="button">Back to main page &raquo;</a></p>
+{% endblock %}
+{% block bodyBlock %}
+<div class="row">
+<div class="col-md-4">
+</div>
+<div class="col-md-4" class="testbox">
+{% if create %}
+<form action="{% url 'create_event' %}" method="post" class="form-type event_form">
+{% else %}
+<form action="{% url 'edit_event' id=id %}" method="post" class="form-type event_form">
+{% endif %}
+    {% for error in form.non_field_errors %}
+        <p class="error_show">
+        {{ error }}
+        </p>
+    {% endfor %}
+    {{form.non_field_errors}}
+
+    {% if errors %}
+        <p class="error_show">
+        {{ errors }}
+        </p>
+    {% endif %}
+  <h3 class="event_title">Event Detail</h3>
+  {% csrf_token %}
+    <fieldset>
+    <input type="text", class="input_type" name="title", placeholder="title" value="{{event.title}}" required ><br>
+    </fieldset>
+    <fieldset>
+    <span class="subtitle">start_time:</span><input type="datetime-local", name="start_time", value="{{event.start_time}}" required ><br>
+    </fieldset>
+    <fieldset>
+    <span class="subtitle">end_time:</span> <input type="datetime-local", name="end_time", value="{{event.end_time}}" required ><br>
+    </fieldset>
+    <fieldset>
+    <input class="input_type" placeholder="address" type="text", name="address", value="{{event.address}}" required><br>
+    </fieldset>
+    <fieldset>
+    <textarea class="input_type" rows="10" name="description" placeholder="description" required>{{event.description}}</textarea>
+    </fieldset>
+
+    <div class="ui-widget">
+      <label for="tags"></label>
+      <b>Tags</b>
+      <input class="input_type" placeholder="Enter tag's name" type="text", name="tags", id="tags", value="{{tags}}"><br>
+    </div>
+
+    <div class="ui-widget">
+      <label for="attenduser"></label>
+      <b>Attend user</b>
+      <input class="input_type" placeholder="Enter user's firstname or lastname" type="text", name="attenduser", id="attenduser", value="{{attendusers}}"><br>
+    </div>
+    <p class="subtitle1"> Privacy: </p>
+    <div class="radio-toolbar">
+    {% if event %}
+      {% if event.privacy %}
+      {{event.privacy}}
+      <input type="radio", id="radio3" name="privacy", value="True", checked="checked">
+      <label for="radio3">Private</label>
+      <input type="radio", id="radio4" name="privacy", value="False">
+      <label for="radio4">Public</label>
+      {% else %}
+      <input type="radio", id="radio3" name="privacy", value="True">
+      <label for="radio3">Private</label>
+      <input type="radio", id="radio4" name="privacy", value="False", checked="checked">
+      <label for="radio4">Public</label>
+      {% endif %}
+    {% else %}
+    <input type="radio" id="radio1" name="radios" value="all" checked>
+    <label for="radio1">Private</label>
+    <input type="radio" id="radio2" name="radios"value="false">
+    <label for="radio2">Public</label>
+    {% endif %}
+    </div>
+    <fieldset></fieldset>
+    <fieldset>
+    <a class="btn btn-success" href="{% url 'home' %}">Cancel</a>
+    <input class="btn btn-success" type="submit" value="Submit">
+    </fieldset>
+</form>
+</div>
+</div>
+{% endblock %}

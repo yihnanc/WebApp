@@ -1,0 +1,102 @@
+body {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  background-image: url("../images/backprofile.jpeg");
+  //background-repeat: no-repeat; 
+  opacity: 0.8;
+  background-size:cover;
+}
+
+h3 {
+  margin-top: 2rem;
+}
+
+.blog-title {
+  margin-bottom: 0;
+  font-size: 3rem;
+  font-weight: normal;
+  color:VioletBlue;
+}
+
+/* Nav links */
+.nav-link {
+  position: relative;
+  padding: 1rem;
+  font-weight: 500;
+  color: yellow;
+}
+.nav-link:hover,
+.nav-link:focus {
+  color: #fff;
+  background-color: transparent;
+}
+
+/* Active state gets a caret at the bottom */
+.nav-link.active {
+  color: #fff;
+}
+.nav-link.active:after {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 0;
+  margin-left: -.3rem;
+  vertical-align: middle;
+  content: "";
+  border-right: .3rem solid transparent;
+  border-bottom: .3rem solid;
+  border-left: .3rem solid transparent;
+}
+
+.blog-header {
+  padding-bottom: 1.25rem;
+  margin-bottom: 2rem;
+  border-bottom: .05rem solid #eee;
+  background-color: #FFFACD;
+  font-style: italic;
+  font-family: :monospace
+}
+
+
+.input
+ {padding:5px 15px; background:#ccc; border:0 none;
+cursor:pointer;
+-webkit-border-radius: 5px;
+border-radius: 5px;
+border:2px black solid; 
+}
+
+
+.text1 {
+  border: 2px solid #765942;
+  border-radius: 10px;
+  height: 100px;
+  width: 500px;
+  background-color:#99FFCC;
+  resize:none;
+}
+
+.blog-post-meta {
+  margin-bottom: 1.25rem;
+  color: #999;
+}
+
+.row {
+  margin-bottom: 1rem;
+}
+.row .row {
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+[class*="col-"] {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  background-color: rgba(86,61,124,.15);
+  border: 1px solid rgba(86,61,124,.2);
+}
+
+hr {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}

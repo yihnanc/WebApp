@@ -1,0 +1,71 @@
+{% extends 'base_register.html' %}
+{% block content %}
+
+{% for error in form.non_field_errors %}
+<p style="color: red">
+{{ error }}
+</p>
+{% endfor %}
+
+
+<div id="container">
+<div style="text-align:center;"><h2><span style="color:LightBlue">Log In MapGether</span></h2></div>
+<form action="{% url 'login' %}" method="post">  
+{% for field in form.visible_fields %}
+<div class="row">
+  <div class="col-xs-4 col-md-5" data-fieldname="name">
+  </div>
+  <div class="col-xs-4 col-md-5" data-fieldname="name">
+      <p>&nbsp;</p>
+      {{field.label.tag}}
+      {{field}}
+  </div>
+</div>  
+<div class="row">
+  <div class="col-xs-4 col-md-5" data-fieldname="name">
+  </div>
+  <div class="col-xs-4 col-md-5" data-fieldname="name">
+      {{field.errors}}
+  </div>
+</div>  
+{% endfor %}
+{% for field in form.hidden_fields %}
+{{field}}
+{% endfor %}
+<div class="row">
+  <div class="col-xs-4 col-md-5" data-fieldname="name">
+  </div>
+  <div class="col-xs-4 col-md-5" data-fieldname="name">
+        <label for="Email" class="sr-only">Log in</label>
+        <p></p>
+        <button class="nav-item btn btn-success" type="submit" style="width:200px">Log in</button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-4 col-md-5" data-fieldname="name">
+  </div>
+  <div class="col-xs-4 col-md-5" data-fieldname="name">
+        <label for="Email" class="sr-only">Clear</label>
+        <p></p>
+        <button class="nav-link btn btn-success" type="reset" style="width:200px">Clear</button>
+  </div>
+</div>
+<p></p>
+ <div class="LoginDialog-footer modal-footer u-textCenter">
+      <p style="text-align:center">
+      <span class="text-present2">Don't have an account？</span>
+      <a id="sign_up_link" href="{% url 'register' %}">
+        <span class="text-present">Sign up</span>
+     <p style="text-align:center">
+      <span style="color:Navy">Forget your password？</span>
+      <a id="sign_up_link" href="#">
+      Reset
+      </a>
+      </p>
+      </a>
+      </p>
+    </div>
+{% csrf_token %}
+</form>
+</div>
+{% endblock %}    

@@ -1,0 +1,7 @@
+I have discussed with TA Rohan Jadvani about my wireframes
+
+He told me that I should keep my wireframe simple and eliminate extra design outside the scope of this homework
+
+Furthermore, he recommend me to seperate my register page and log in page. 
+
+I use pen to delete the unnecessary part and took a photo as revised version

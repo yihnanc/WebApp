@@ -1,0 +1,266 @@
+/*
+ * Globals
+ */
+
+@media (min-width: 48em) {
+  html {
+    font-size: 18px;
+  }
+}
+
+body {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color:orange;
+  //background-color:blue;
+  background-image: url("../images/blogback.jpg");
+  //background-repeat: no-repeat; 
+  opacity: 0.8;
+  background-size:cover;
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  color: #333;
+}
+
+.textStyle{
+  resize : none;
+  font-size: 13px;
+  color: blue;
+  overflow-y:hidden;
+  overflow-x:hidden;
+  font-family: serif;
+  width: 200px;
+  max-height: 50px;
+  border:2px;
+  border-style:ridge;
+  border-color:Lime; 
+  text-align: left;
+  float:left;
+}
+
+.textStyle2{
+  resize : none;
+  font-size: 13px;
+  color: blue;
+  overflow-y:hidden;
+  overflow-x:hidden;
+  font-family: serif;
+  border:2px;
+  border-style:ridge;
+  border-color:Blue; 
+  text-align: left;
+  float:left;
+}
+
+.textStyle3{
+  resize : none;
+  font-size: 13px;
+  color: blue;
+  overflow-y:hidden;
+  overflow-x:hidden;
+  font-family: serif;
+  border:2px;
+  border-style:ridge;
+  border-color:#192BC2; 
+  text-align: left;
+  float:left;
+}
+
+.col-right{
+  float:right;
+}
+
+.textHeight{
+    height:50px;
+}
+.textBackground{
+    background-color:#EBF38B;
+}
+
+.textBackground1{
+    background-color:#F5D547;
+}
+.textStyle1{
+  resize : none;
+  font-size: 13px;
+  color: blue;
+  overflow-y:hidden;
+  overflow-x:hidden;
+  font-family: serif;
+//  border-style:double;
+ // border-color:#706993; 
+  text-align: left;
+  font-family:sans-serif;
+  float:left;
+}
+
+.userText{
+    border-style:none;
+    color:#5941A9;
+}
+
+
+.form-style-5{
+    //margin: 10px auto;
+ //   padding: 20px;
+    background: #98FB98;
+    max-height:80px;            
+    max-width:400px;            
+    border-radius: 10px;
+     border: 6px solid #305A72;
+    font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+
+/*
+ * Override Bootstrap's default container.
+ */
+
+.container {
+  max-width: 60rem;
+}
+
+
+/*
+ * Masthead for nav
+ */
+
+.blog-masthead {
+  margin-bottom: 3rem;
+  background-color: Navy;
+  -webkit-box-shadow: inset 0 -.1rem .25rem rgba(0,0,0,.1);
+          box-shadow: inset 0 -.1rem .25rem rgba(0,0,0,.1);
+}
+
+/* Nav links */
+.nav-link {
+  position: relative;
+  padding: 1rem;
+  font-weight: 500;
+  color: #cdddeb;
+}
+.nav-link:hover,
+.nav-link:focus {
+  color: #fff;
+  background-color: transparent;
+}
+
+/* Active state gets a caret at the bottom */
+.nav-link.active {
+  color: #fff;
+}
+.nav-link.active:after {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 0;
+  margin-left: -.3rem;
+  vertical-align: middle;
+  content: "";
+  border-right: .3rem solid transparent;
+  border-bottom: .3rem solid;
+  border-left: .3rem solid transparent;
+}
+
+
+/*
+ * Blog name and description
+ */
+
+.blog-header {
+  padding-bottom: 1.25rem;
+  margin-bottom: 2rem;
+  border-bottom: .05rem solid #eee;
+  background-color: #FFFACD;
+  font-style: italic;
+  font-family: :monospace;
+}
+.blog-title {
+  margin-bottom: 0;
+  font-size: 2rem;
+  font-weight: normal;
+  color:VioletBlue;
+}
+.blog-description {
+  font-size: 1.1rem;
+  color: #999;
+}
+
+@media (min-width: 40em) {
+  .blog-title {
+    font-size: 3.5rem;
+  }
+}
+
+
+/*
+ * Main column and sidebar layout
+ */
+
+/* Sidebar modules for boxing content */
+.sidebar-module {
+  padding: 1rem;
+  /*margin: 0 -1rem 1rem;*/
+}
+.sidebar-module-inset {
+  padding: 1rem;
+  background-color: #f5f5f5;
+  border-radius: .25rem;
+}
+.sidebar-module-inset p:last-child,
+.sidebar-module-inset ul:last-child,
+.sidebar-module-inset ol:last-child {
+  margin-bottom: 0;
+}
+
+
+/* Pagination */
+.blog-pagination {
+  margin-bottom: 4rem;
+}
+.blog-pagination > .btn {
+  border-radius: 2rem;
+}
+
+
+/*
+ * Blog posts
+ */
+
+.blog-post {
+  margin-bottom: 2rem;
+}
+.blog-post-title {
+  margin-bottom: .25rem;
+  font-family: monospace;
+  font-size: 2.5rem;
+  color:LawnGreen;
+}
+.blog-post-meta {
+  margin-bottom: 1.25rem;
+  color: #999;
+}
+
+
+/*
+ * Footer
+ */
+
+.blog-footer {
+  padding: 2.5rem 0;
+  color: #999;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-top: .05rem solid #e5e5e5;
+}
+.blog-footer p:last-child {
+  margin-bottom: 0;
+}

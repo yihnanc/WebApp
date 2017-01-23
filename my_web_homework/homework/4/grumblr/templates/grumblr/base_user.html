@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+
+    <title>Grid Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'grumblr/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'grumblr/grid.css' %}" rel="stylesheet">
+    <link href="{% static 'grumblr/navbar.css' %}" rel="stylesheet">
+    <link href="{% static 'grumblr/offcanvas.css' %}" rel="stylesheet">
+    <link href="{% static 'grumblr/blog.css' %}" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="container">
+    <nav class="navbar navbar-light bg-faded">
+        <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#navbar-header" aria-controls="navbar-header">
+          &#9776;
+        </button>
+        <div class="collapse navbar-toggleable-xs" id="navbar-header">
+          <nav class="nav navbar-nav">
+          <a class="nav-item nav-link" href="{% url 'home' %}">Home</a>
+          <a class="nav-item nav-link" href="{% url 'stream' %}">Newest post</a>
+          <a class="nav-item nav-link" href="{% url 'fstream' %}">Follower Stream</a>
+          </nav>
+          <nav class="nav navbar-nav pull-xs-right">
+          <a class="nav-item nav-link" href="{% url 'logout' %}">Log out</a>
+        </nav>
+        </div>
+      </nav> <!-- /navbar -->
+      <h1 class="blog-title">{{users.username}}'s Profile</h1>
+      <span class="textTitle1">Here is the basic information and the most recent post of you</span>
+      <p></p>
+      <p></p>
+<div class="row blog-header">
+  <div class="textTitle"><p>Personal Info</p></div>
+{% block personalInfo %}
+{% endblock %}
+  
+</div>
+
+{% block content %}
+{% endblock %}
+
+
+    </div> <!-- /container -->
+
+
+  </body>
+</html>

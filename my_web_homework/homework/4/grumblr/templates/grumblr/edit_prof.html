@@ -1,0 +1,61 @@
+{% extends 'base_user.html' %}
+{% block personalInfo %}
+<form enctype="multipart/form-data" action="{% url 'edit' users.username %}"method="post">
+  <div class="col-xs-4">
+   {% if form.picture.value %}
+   <img src="{% url 'photo' users.username %}" alt="{{form.first_name.value}} {{form.last_name.value}}" width="200px"/>
+   {% endif %}
+    <input type="file" name="picture" autocomplete="off" size="20"/>
+  </div>
+<div class="col-xs-4">
+    Last Name:<input class="input" type="text" name="last_name" autocomplete="off" size="20" value="{{form.last_name.value}}"/>
+    <p></p>
+    First Name:<input class="input" type="text" name="first_name" autocomplete="off" size="20" value="{{form.first_name.value}}"/>
+    <p></p>
+     <input class="input" type="text" autocomplete="off" size="31" value="Username: {{users.username}}" readonly/>
+     <p></p>
+    <input class="input" type="text" autocomplete="off" size="31" value="Email: {{users.email}}" readonly/>
+      <p></p>
+    Age:<input class="input" type="number" name="age" autocomplete="off" size="20" value="{{form.age.value}}"/>
+  </div>
+{% csrf_token %}
+<div class="col-xs-4">
+    Bio:
+    <p></p>
+    <textarea class="textStyle2" name="bio" autocomplete="off" rows="5" cols="30" maxlength="420">
+    {{form.bio.value}}
+     </textarea>
+</div>
+    <button class="btn btn-default btn-primary" type="submit" style="width:200px">Edit Profile</button>
+</form>
+<a class="btn btn-default btn-primary" href="{% url 'chgpwd' %}">Change Password</a>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+  <h2>Post History</h2>
+</div>
+
+{% for post in posts %}
+    <div class="row">
+    <div class="col-xs-2">
+    <form>
+   <img src="{% url 'photo' post.users.username %}" width="50px"/>
+    <textarea class="textStyle2 textHeight textBackground" name="comment" type="text" readonly="readonly",maxlength="420" cols="50" rows="3">
+    {{post.post}}
+    </textarea>
+    </form>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-xs-2">
+    <input class="userText" name="comment" type="text" value={{post.time}} readonly="readonly" />
+    </div>
+    </div>
+{% endfor %}
+
+<div class="row">
+  <a class="btn btn-outline-primary" href="#">Newer</a>
+  <a class="btn btn-outline-primary" href="#">Older</a>
+</div>
+{% endblock %}

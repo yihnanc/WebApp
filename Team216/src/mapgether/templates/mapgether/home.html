@@ -1,0 +1,40 @@
+{% extends 'base_template.html' %}
+{% block topTitle %}
+    {% if username %}
+        <a class="navbar-brand" href="{% url 'home' %}">Welcome {{username.username}}</a>
+    {% else %}
+        <a class="navbar-brand" href="{% url 'home' %}">Welcome</a>
+    {% endif %}
+{% endblock %}
+{% block functionButton %}
+    {% if not username %}
+        <a class="nav-item btn btn-success" href="{% url 'login' %}">Sign In</a>
+        <a class="nav-item btn btn-success" href="{% url 'register' %}">Sign Up</a>
+    {% else %}
+        <a class="nav-item btn btn-success" href="{% url 'profile' %}">Profile</a>
+        <a class="nav-item btn btn-success" href="{% url 'logout' %}">Log out</a>
+        <span id="eventNotification"></span>
+    {% endif %}
+{% endblock %}
+{% block realTitle %}
+        <h1><span class="home_title">MapGether!</span></h1>
+        <p class="subtitle">Professional personal event assistant.</p>
+        {% if username %}
+        <p><a class="btn btn-primary btn-lg" href="{% url 'create_event' %}" role="button">Create Event &raquo;</a></p>
+
+        <h2><span class="home_subtitle">Your Favorite Tag</span></h2>
+        <a class="btn btn-primary btn-success" href="{% url 'home' %}" role="button">Public </a>
+
+        {% for tag in user_tags %}
+        <a class="usertags btn btn-primary btn-success" href="{% url 'tag_event' name=tag.tagname %}" id={{tag.tagname}} role="button">{{tag.tagname}} </a>
+        {% endfor %}
+
+        {% endif %}
+{% endblock %}
+{% block bodyBlock %}
+      <div class="row">
+        <div class="col-md-6" id="map" style="height:550px;width:550px;"></div>
+        <div class="col-md-1"></div>
+        <div class="col-md-5 scroll-layout" id="events"></div>
+      </div>
+{% endblock %}

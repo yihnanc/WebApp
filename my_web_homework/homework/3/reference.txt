@@ -1,0 +1,8 @@
+1. I use the templete from homework 1 and change some configure setting
+   I reference the bootstrap for my web design.
+
+2. I reference this website for color setting of my web
+   https://coolors.co/bcb6ff-758ecd-fdfdff-706993-7189ff
+   
+
+

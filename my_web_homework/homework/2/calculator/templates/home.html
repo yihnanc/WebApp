@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+{% load staticfiles %}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>   
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="{% static 'css/calculator.css' %}" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+<!-- for debug {% if record %}
+<h1>Hello, {{record}}</h1>
+{% endif %}-->	
+<form class="myForm" method="POST">
+    <div class="row">
+        <input class="textShow" value={{show}} type="text" name="result" readonly="readonly"/>  
+    </div>
+    <div class="row">
+        <p></p>
+    	<input type="hidden" value={{record}} name="rec">
+    	<input type="hidden" value={{negative}} name="neg">
+    	<button class="numStyle" name="seven" type="submit" value="7">7</button>
+    	<button class="numStyle" name="eight" type="submit" value="8">8</button>
+    	<button class="numStyle" name="nine" type="submit" value="9">9</button>
+    	<button class="synStyle" name="add" type="submit" value="+">+</button>
+    </div>
+     <div class="row">
+        <p></p>
+    	<button class="numStyle" name="four" type="submit" value="4">4</button>
+    	<button class="numStyle" name="five" type="submit" value="5">5</button>
+    	<button class="numStyle" name="six" type="submit" value="6">6</button>
+    	<button class="synStyle" name="minus" type="submit" value="-">&#8722;</button>
+    </div>
+     <div class="row">
+        <p></p>
+    	<button class="numStyle" name="one" type="submit" value="1">1</button>
+    	<button class="numStyle" name="two" type="submit" value="2">2</button>
+    	<button class="numStyle" name="three" type="submit" value="3">3</button>
+    	<button class="synStyle" name="multiply" type="submit" value="*">&#215;</button>
+    </div>
+    <div class="row">
+        <p></p>
+    	<button class="clrStyle" name="clear" type="submit" value="clr">C</button>
+    	<button class="numStyle" name="zero" type="submit" value="0">0</button>
+    	<button class="synStyle" name="equal" type="submit" value="=">=</button>
+    	<button class="synStyle" name="divide" type="submit" value="/">&#247;</button>
+    </div>
+    {% csrf_token %}
+</form>
+</body>
+</html>
+
+

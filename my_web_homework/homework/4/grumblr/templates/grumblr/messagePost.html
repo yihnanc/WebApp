@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+
+    <title>Blog Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'grumblr/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/blog.css" rel="stylesheet">
+    <link href="{% static 'grumblr/blog.css' %}" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="nav blog-nav">
+          <a class="nav-link" href={% url 'home' %}>Home</a>
+          <a class="nav-link active" href={% url 'stream' %}>Newest Post</a>
+          <a class="nav-link" href="{% url 'fstream' %}">Follower Stream</a>
+          <a class="nav-link pull-xs-right pull-md-right" href="{% url 'logout' %}">Log out</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="blog-header">
+      <div class="container">
+        <h1 class="blog-title">Grumblur</h1>
+        {% if username %}
+        <h2>Hi, <a href={% url 'users' username %}>{{username}}</a></h2>
+        {% endif %}
+        <p class="lead blog-description">Speak Your Mind Freely.</p>
+      </div>
+    </div>
+    <div class="col-right blog-sidebar">
+        <div class="sidebar-module sidebar-module-inset">
+            <h4>About</h4>
+            <ol>
+             <li><a href="#">August 2016</a></li>
+              <li><a href="#">July 2016</a></li>
+              <li><a href="#">June 2016</a></li>
+            </ol>
+          </div>
+      </div>
+
+    <div class="container">
+      <div class="row">
+      <form  method="post" action="{% url 'post' %}" class="col-xs-6">
+        <input class="textStyle1 textHeight" name="comment" type="text" size="42" maxlength=42>
+        <br/>
+        <br/>
+       <button class="btn btn-default btn-primary" type="reset" style="width:80px">Cancel</button>
+       <button class="btn btn-default btn-primary" type="submit" style="width:80px">Post</button>
+
+      
+    {% csrf_token %}
+    </form>
+    </div>
+    {% for post in posts %}
+    <div class="row">
+    <form class="col-xs-6">
+    <textarea class="textStyle1 textHeight textBackground" name="comment" type="text" readonly="readonly" size="50",maxlength="42" cols="50" rows="3">
+    {{post.post}}
+    </textarea>
+    <br/>
+    <br/>
+    </form>
+    </div>
+    <div class="row">
+    <form class="form-inliine">
+    <div class="col-xs-2">
+   <img src="{% url 'photo' post.users.username %}" width="50px"/>
+        <a href={% url 'users' post.users.username %}>
+       <span class="userText"> {{ post.users.username }} </span></a>
+    </div>
+    <div class="col-xs-5">
+    <input class="userText" name="comment" type="text" value={{post.time}} readonly="readonly" />
+    <p></p>
+    </div>
+    </form>
+    </div>
+    {% endfor %}
+
+
+    </div>
+
+    
+
+    <footer class="blog-footer">
+      <p>Blog supported by <a href="mine.html">Grumblr</a> by <a href="https://twitter.com/mdo">@grumblr</a>.</p>
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+  </body>
+</html>
